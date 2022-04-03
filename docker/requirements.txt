@@ -1,0 +1,10 @@
+Flask
+Flask-Script
+Flask-Sqlalchemy
+Flask-Restful
+pymysql
+Flask-inputs
+flask-redis
+flask_cors
+openpyxl
+python-dateutil

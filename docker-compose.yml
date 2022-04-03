@@ -1,0 +1,26 @@
+version: '2'
+services:
+  datos:
+    image: busybox
+    volumes:
+      - .:/app
+  redis:
+    image: redis
+    # ports:
+    #     - "6378:6379"
+    # expose:
+    #   - "6378"
+  backend:
+    build:
+      context: ./docker
+    volumes_from:
+      - datos
+    ports:
+        - "5000:5000"
+    expose:
+      - "5000"
+    links:
+      - redis:redis
+    depends_on:
+      - datos
+      - redis

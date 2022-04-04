@@ -41,6 +41,10 @@ class VehiculoModel(db.Model):
         return cls.query.filter_by(patente=patente).first()
 
     @classmethod
+    def buscar_por_patente_all(cls,patente):
+        return cls.query.order_by("id desc").filter_by(patente=patente).all()    
+        
+    @classmethod
     def buscar_por_id(cls,_id):
         return cls.query.filter_by(id=_id).first()
 

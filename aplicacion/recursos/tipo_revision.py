@@ -13,7 +13,6 @@ class TipoRevision(Resource):
 		data = TipoRevision.parser.parse_args()
 		_id = data['id']
 		try:
-			print(_id)
 			tipo_revision = TipoRevisionModel.buscar_por_id(_id)
 			if tipo_revision:
 				return tipo_revision.obtener_datos()

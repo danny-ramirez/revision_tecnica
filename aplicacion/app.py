@@ -13,8 +13,8 @@ from aplicacion.helpers.sesion import Sesion
 from aplicacion.recursos.login import Login
 from aplicacion.recursos.tipo_revision import TipoRevision, TipoRevisionAll
 from aplicacion.recursos.persona import AddEncagadoRevision, ListaPersona
-from aplicacion.recursos.revision import IngresarVehiculoRevision
-from aplicacion.recursos.inspeccion import AddInspeccion
+from aplicacion.recursos.revision import IngresarVehiculoRevision, RevisionesVehiculo, UpdateEstadoRevision
+from aplicacion.recursos.inspeccion import AddInspeccion, DeleteInspeccion
 
 
 # IMPORTACIÓN DE RECURSOS
@@ -60,6 +60,9 @@ api.add_resource(AddEncagadoRevision,'/new_encargado_revision')
 api.add_resource(ListaPersona,'/listado_persona')
 api.add_resource(IngresarVehiculoRevision,'/ingresar_revision')
 api.add_resource(AddInspeccion,'/ingresar_inspeccion')
+api.add_resource(DeleteInspeccion,'/eliminar_inspeccion')
+api.add_resource(RevisionesVehiculo,'/historial_revisiones')
+api.add_resource(UpdateEstadoRevision,'/update_estado_revision')
 
 
 #Se carga host 

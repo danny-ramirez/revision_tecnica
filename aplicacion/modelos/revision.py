@@ -28,8 +28,7 @@ class RevisionModel(db.Model):
         self.personaId = personaId
         self.aprobado = aprobado
         self.observaciones = observaciones
-        self.fecha_revision = fecha_revision
-        
+        self.fecha_revision = fecha_revision        
     
     def obtener_datos(self):
         fecha_revision = None
@@ -53,7 +52,10 @@ class RevisionModel(db.Model):
     def buscar_por_fecha_revision(cls,fecha_revision):
         return cls.query.filter_by(fecha_revision=fecha_revision).all()        
 
-
+    @classmethod    
+    def lista_all_revisiones_vehiculo(cls,vehiculoId):
+        return cls.query.order_by("fecha_revision desc").filter_by(vehiculoId=vehiculoId).all()
+            
     @classmethod
     def buscar_por_id(cls,_id):
         return cls.query.filter_by(id=_id).first()
@@ -69,3 +71,16 @@ class RevisionModel(db.Model):
     def eliminar(self):
         db.session.delete(self)
         db.session.commit()
+
+    @classmethod
+    def update_data(cls, _id, dataJson):
+        query = cls.query.filter_by(id=_id).first()
+        if query:
+            if 'aprobado' in dataJson:
+                query.aprobado = dataJson['aprobado']
+            if 'observaciones' in dataJson:
+                query.observaciones = dataJson['observaciones']    
+            db.session.commit()
+            if query.id:                            
+                return query.id
+        return  None

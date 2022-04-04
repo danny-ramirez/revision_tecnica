@@ -25,7 +25,7 @@ class InspeccionModel(db.Model):
     
     def __init__(self, revisionId, tipoInspeccionId, personaId, estado, observaciones):
         self.revisionId = revisionId
-        self.tipoInpeccionId = tipoInspeccionId
+        self.tipoInspeccionId = tipoInspeccionId
         self.personaId = personaId
         self.estado = estado
         self.observaciones = observaciones
@@ -42,6 +42,18 @@ class InspeccionModel(db.Model):
     def buscar_por_id(cls,_id):
         return cls.query.filter_by(id=_id).first()
 
+    @classmethod
+    def buscar_inspeccion(cls,revisionId, personaId, tipoInspeccionId):
+        return cls.query.\
+            filter_by(revisionId=revisionId).\
+            filter_by(personaId=personaId).\
+            filter_by(tipoInspeccionId=tipoInspeccionId).\
+            first()
+            
+    @classmethod
+    def buscar_inspeccion_revision_all(cls,revisionId):
+        return cls.query.filter_by(revisionId=revisionId).all()
+                    
     def guardar(self):
         db.session.add(self)
         db.session.commit()

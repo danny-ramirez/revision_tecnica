@@ -164,8 +164,7 @@ class IngresarVehiculoRevision(Resource):
 					# ---------------------------------------------------------------------
 					existeDueno = PersonaModel.buscar_por_propietario(identificacion_dueno)
 					if not existeDueno:
-						tipo_persona = "Dueño"
-						newPropietario = PersonaModel(identificacion_dueno, nombre, apellido, tipo_persona)
+						newPropietario = PersonaModel(identificacion_dueno, nombre, apellido)
 						newPropietario.guardar()
 						idPropietario = newPropietario.id
 					else:

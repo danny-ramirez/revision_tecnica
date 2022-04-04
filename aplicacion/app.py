@@ -10,7 +10,6 @@ from aplicacion.db import db
 from aplicacion.redis import redis
 from aplicacion.modelos import *
 from aplicacion.helpers.sesion import Sesion
-from aplicacion.recursos.login import Login
 from aplicacion.recursos.tipo_revision import TipoRevision, TipoRevisionAll
 from aplicacion.recursos.persona import AddEncagadoRevision, ListaPersona
 from aplicacion.recursos.revision import IngresarVehiculoRevision, RevisionesVehiculo, UpdateEstadoRevision
@@ -53,7 +52,7 @@ api = Api(app)
 
 # SE DEFINEN LOS ENDPOINTS Y LA CLASE QUE SE ENCARGARÁ DE PROCESAR CADA SOLICITUD
 # 
-api.add_resource(Login, '/login')
+
 api.add_resource(TipoRevision,'/tipo_revision')
 api.add_resource(TipoRevisionAll,'/tipo_revision_all')
 api.add_resource(AddEncagadoRevision,'/new_encargado_revision')

@@ -20,16 +20,14 @@ class PersonaModel(db.Model):
     identificacion = db.Column(db.String(20, 'latin1_spanish_ci'))
     nombre = db.Column(db.String(200, 'latin1_spanish_ci'))
     apellido = db.Column(db.String(200, 'latin1_spanish_ci'))
-    tipo_persona = db.Column(db.String(200, 'latin1_spanish_ci'))
-
-    def __init__(self, identificacion, nombre, apellido, tipo_persona):
+    
+    def __init__(self, identificacion, nombre, apellido):
         self.identificacion = identificacion
         self.nombre = nombre
         self.apellido = apellido
-        self.tipo_persona = tipo_persona
-    
+            
     def obtener_datos(self):
-        return {'id': self.id, 'identificacion': self.identificacion, 'nombre': self.nombre,'apellido': self.apellido, "tipo_persona" : self.tipo_persona}
+        return {'id': self.id, 'identificacion': self.identificacion, 'nombre': self.nombre,'apellido': self.apellido}
 
     @classmethod
     def buscar_por_identificacion(cls,identificacion):

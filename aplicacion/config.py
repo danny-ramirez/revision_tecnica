@@ -14,9 +14,6 @@ class DevelopmentConfig(Config):
 
     PATH_STORAGE = "/app/tmp"
 
-    SERVICES_NOT_VERIFYABLE = {
-        'rttiporevision'
-    }
 
 app_config = {
     'development': DevelopmentConfig,

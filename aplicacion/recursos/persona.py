@@ -18,8 +18,7 @@ class ListaPersona(Resource):
 						"id" : persona.id,
 						"identificacion" : persona.identificacion,
 						"nombre" : persona.nombre,
-						"apellido" : persona.apellido,
-						"tipo_persona" : persona.tipo_persona
+						"apellido" : persona.apellido
 					}
 					result.append(data)
 				return {"success":True, "message":"Acción realizada con éxito", "data":result }
@@ -41,13 +40,10 @@ class AddEncagadoRevision(Resource):
 		try:
 			existeEncargado = PersonaModel.buscar_por_identificacion(identificacion)
 			if not existeEncargado:
-				tipo_persona = "Encargado"
-				newEncargado = PersonaModel(identificacion, nombre, apellido, tipo_persona)
+				newEncargado = PersonaModel(identificacion, nombre, apellido)
 				newEncargado.guardar()
 				if newEncargado:
 					data['id'] = newEncargado.id
-					data['tipo_persona'] = tipo_persona
-
 					return {"success":True, "message":"Acción realizada con éxito", "new encargado": data}, 200
 				return {"success":False, "message":"Ha ocurrido un error"},	403
 			return {"success":False, "message":"Encargado ya existe", "data": existeEncargado}, 200

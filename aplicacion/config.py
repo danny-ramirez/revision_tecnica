@@ -4,9 +4,7 @@ class Config(object):
     DEBUG = False
 
 class DevelopmentConfig(Config):
-    """
-    Development configurations
-    """
+   
     SQLALCHEMY_DATABASE_URI = "mysql+pymysql://admin:ZEId3qTQ@172.107.32.120:14196/revision_tecnica"
     SQLALCHEMY_POOL_RECYCLE = 300
     DEBUG = True
@@ -19,41 +17,6 @@ class DevelopmentConfig(Config):
     SERVICES_NOT_VERIFYABLE = {
         'rttiporevision'
     }
-"""
-class DevelopmentConfig(Config):
-    
-    #Development configurations
-    
-    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:preprobd@192.168.5.51:3306/Sineduc"
-    SQLALCHEMY_POOL_RECYCLE = 300
-    DEBUG = True
-    SQLALCHEMY_ECHO = True
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
-    REDIS_URL = "redis://@redis:6379/0"
-
-class TestingConfig(Config):
-    
-    # Testing configurations
-    
-    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:tec.wor_08@192.168.5.60:3306/Sineduc"
-    SQLALCHEMY_POOL_RECYCLE = 300
-    TESTING = True 
-    DEBUG = True
-    REDIS_URL = "redis://@redis:6379/0"
-
-class ProductionConfig(Config):
-    
-    # Production configurations
-        SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:tec.wor_08@192.168.5.26:3306/Sineduc"
-    SQLALCHEMY_POOL_RECYCLE = 300
-    REDIS_URL = "redis://@redis:6379/0"
-"""
-
-# app_config = {
-#     'development': DevelopmentConfig,
-#     'testing': TestingConfig,
-#     'production': ProductionConfig
-# }
 
 app_config = {
     'development': DevelopmentConfig,
